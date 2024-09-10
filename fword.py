@@ -7,8 +7,8 @@ from matplotlib.ticker import FuncFormatter
 def exp_func(x, a, b, c):
     return a * np.exp(b * x) + c
 
-def format_func(value, tick_number):
-    return str(int(value))
+def comma(value, tick_number):
+    return f'{int(value):,}'
 
 album_numbers = [1, 2, 3, 4]
 album_names = ['Folklore', 'Evermore', 'Midnights', 'TDPD']
@@ -37,5 +37,5 @@ plt.legend()
 plt.xticks(all_albums, rotation=45)
 plt.tight_layout()
 plt.yscale('log')
-plt.gca().yaxis.set_major_formatter(FuncFormatter(format_func))
+plt.gca().yaxis.set_major_formatter(FuncFormatter(comma))
 plt.savefig('Fword.png', bbox_inches='tight')
